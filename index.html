@@ -12,26 +12,31 @@
     <!-- HEADER BEGINS -->
 
     <header>
-        <h1>Be Still</h1>
-        <h2>among the <a>leaves</a></h2>
+        <h1>be still</h1>
+        <h2 class="showHide active">among the <a href="" class="toggle">leaves</a></h2>
     </header>
 
     <!-- HEADER ENDS -->
     <!-- BODY BEGINS -->
 
-    <!-- settings -->
-    <section class="settings active">
-        <p>click the <a>red</a> text to see your options</p>
-        <p>inhale for <a>5</a> seconds, exhale for <a>10</a> seconds</p>
-        <p>sound is <a>on</a></p>
-        <p><a>don't set</a> a timer for <a>1</a> minute</p>
-        <a href="">begin</a>
+    <!-- settings view -->
+    <section class="showHide settings active">
+        <p>click the <a class="toggle" href="">red</a> text to see your options</p>
+        <p>inhale for <a class="toggle" href="">5</a> seconds, exhale for <a class="toggle" href="">10</a> seconds</p>
+        <p>sound is <a class="toggle" href="">on</a></p>
+        <p><a href="">don't set</a> a timer for <a class="toggle" href="">1</a> minute</p>
     </section>
     <!-- meditation view -->
-    <section class="meditate dormant">
+    <section class="showHide meditate dormant">
         <!-- animation -->
         <div class="animation">
         </div>
+    </section>
+    <!-- activate button -->
+    <section>
+        <h3>
+            <a class="activate toggle" href="">begin</a>
+        </h3>
     </section>
 
     <script src='https://code.jquery.com/jquery-3.2.1.min.js' integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4='crossorigin='anonymous'></script>
