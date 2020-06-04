@@ -12,21 +12,25 @@ const beStill = {};
 
 
 // array to hold length of breaths
-const animationLength = [
-    "3s",
-    "5s",
-    "8s",
-    "10s",
-    "12s",
-    "15s"
-]
+const toggleBreaths = [
+    3,
+    5,
+    8,
+    10,
+    12,
+    15
+];
 
 // array to hold toggle colours
-const toggleColors = {
-    toggleOne: "#DB5461",
-    toggleTwo:  "#59CD90",
-    toggleThree: "#F0C808"
-}
+const toggleColors = [
+    "#DB5461",
+    "#59CD90",
+    "#F0C808"
+];
+
+let inhaleLength = 0;
+
+// prevent default on a tag
 
 // beStill.init = () => {
 //     let toggleColor = toggleColors.toggleOne;
@@ -41,25 +45,25 @@ $(document).ready(function() {
         // toggle class on settings & animation
         $('.showHide').toggleClass('active').toggleClass('dormant');       
         // change text inside activate button
-        if ($(this).val('begin')) {
+        if ($(this).text('begin')) {
             $(this).text('adjust');
+        } else {
+            $(this).text('begin');
         }
     });
-    
 
-    // change color of a tags on click
-    // $('.toggle').on('click', function() {
-    //     $(this).css('color: #000');
-    // })
+    // cycle through breath lengths on click
+    $('.inhale').on('click', function(e) {
+        e.preventDefault();
+        // cycle up through available breath lengths
+        inhaleLength += 1;
+        // reset to 0 index once end of array is reached
+        if (inhaleLength === toggleBreaths.length) { inhaleLength = 0 };
+        // change text to reflect current breath length
+        $(this).text(toggleBreaths[inhaleLength])
+        // change value of CSS animation property to reflect current breath length
+        $('.animation').css({ animation: `breathe ${toggleBreaths[inhaleLength]} ease-out infinite`});
+    });
+    
 });
 
-
-
-// if (i === 4) {
-//     i = 0;
-// }
-
-// const toggle = () => {
-//     $('.toggle').on('click', () => {
-
-//     })

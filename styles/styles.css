@@ -267,8 +267,8 @@ h3 {
   width: 50vw;
   height: 50vw;
   border-radius: 50%;
-  -webkit-animation: breathe 5s ease-out infinite;
-          animation: breathe 5s ease-out infinite;
+  -webkit-animation: breathe 3s ease-out infinite;
+          animation: breathe 3s ease-out infinite;
   -webkit-animation-direction: alternate;
           animation-direction: alternate;
 }
