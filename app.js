@@ -20,14 +20,26 @@ const toggleBreaths = [
 
 // array to hold toggle colours
 const toggleColors = [
-    "#DB5461",
-    "#59CD90",
-    "#F0C808"
-];
+    {
+        colorText: 'red',
+        colorHex: '#DB5461'
+    },
+    {
+        colorText: 'green',
+        colorHex: '#59CD90'
+    },
+    {
+        colorText: 'yellow',
+        colorHex: '#F0C808'
+    }
+]
 
 let inhaleLength = 0;
+let colorSelect = 0;
 
 $('.inhale').text(toggleBreaths[0]);
+$('.toggle').css('color', toggleColors[0].colorHex)
+
 
 // prevent default on a tag
 
@@ -61,11 +73,28 @@ $(document).ready(function() {
         if (inhaleLength === toggleBreaths.length) { inhaleLength = 0 };
         // change text to reflect current breath length
         $(this).text(toggleBreaths[inhaleLength])
-        console.log(toggleBreaths[inhaleLength]);
         // change value of CSS animation property to reflect current breath length
         $('.animation')
             .css('animation-duration', `${toggleBreaths[inhaleLength]}s`)
     });
+
+    // cycle through button colours on click
+    $('.color').on('click', function(e){
+        e.preventDefault();
+        // cycle up through available colors, resetting to zero once end of array is reached
+        colorSelect += 1;
+        if (colorSelect === toggleColors.length) { colorSelect = 0 };
+        console.log(colorSelect)
+        $(this).text(toggleColors[colorSelect].colorText);
+        $('.toggle').css('color', toggleColors[colorSelect].colorHex)
+
+    })
     
 });
 
+
+// const cycleThrough = function(indexVariable, array) {
+//     indexVariable += 1;
+//     if (indexVariable === array.length) { indexVariable = 0 };
+//     return indexVariable;
+// }

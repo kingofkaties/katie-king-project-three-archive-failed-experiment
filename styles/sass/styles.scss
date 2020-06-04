@@ -35,7 +35,8 @@ body {
 }
 
 h1,
-h2 {
+h2,
+h3 {
     font-family: "Tenali Ramakrishna", serif;
 }
 
@@ -49,12 +50,9 @@ h1 {
     font-size: 7rem;
 }
 
-h2 {
-    font-size: 4rem;
-}
-
+h2,
 h3 {
-    font-size: 3rem;
+    font-size: 4rem;
 }
 
 // VISIBILITY
@@ -66,18 +64,18 @@ h3 {
     width: 50vw;
     height: 50vw;
     border-radius: 50%;
-    animation: breathe 3s ease-out infinite;
+    animation: breathe 3s ease-in infinite;
     animation-direction: alternate;
 }
 
 @keyframes breathe {
     0% {
-        transform: scale(0.1);
+        transform: scale(0.3);
         // width: 10vw;
         // height: 10vw;
     }
     10% {
-        transform: scale(0.1);
+        transform: scale(0.3);
         // width: 10vw;
         // height: 10vw;
     }
