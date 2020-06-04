@@ -45,7 +45,7 @@ $(document).ready(function() {
         // toggle class on settings & animation
         $('.showHide').toggleClass('active').toggleClass('dormant');       
         // change text inside activate button
-        if ($(this).text('begin')) {
+        if ($(this).text() === 'begin') {
             $(this).text('adjust');
         } else {
             $(this).text('begin');
@@ -55,14 +55,15 @@ $(document).ready(function() {
     // cycle through breath lengths on click
     $('.inhale').on('click', function(e) {
         e.preventDefault();
-        // cycle up through available breath lengths
+        // cycle up through available breath lengths and reset to zero once end of array is reached
         inhaleLength += 1;
-        // reset to 0 index once end of array is reached
         if (inhaleLength === toggleBreaths.length) { inhaleLength = 0 };
         // change text to reflect current breath length
         $(this).text(toggleBreaths[inhaleLength])
+        console.log(toggleBreaths[inhaleLength]);
         // change value of CSS animation property to reflect current breath length
-        $('.animation').css({ animation: `breathe ${toggleBreaths[inhaleLength]} ease-out infinite`});
+        $('.animation')
+            .css('animation-duration', `${toggleBreaths[inhaleLength]}s`)
     });
     
 });

@@ -276,38 +276,38 @@ h3 {
 @-webkit-keyframes breathe {
   0% {
     width: 20%;
-    height: 20%;
+    height: 10vw;
   }
   20% {
     width: 20%;
-    height: 20%;
+    height: 10vw;
   }
   80% {
     width: 100%;
-    height: 100%;
+    height: 50vw;
   }
   100% {
     width: 100%;
-    height: 100%;
+    height: 50vw;
   }
 }
 
 @keyframes breathe {
   0% {
     width: 20%;
-    height: 20%;
+    height: 10vw;
   }
   20% {
     width: 20%;
-    height: 20%;
+    height: 10vw;
   }
   80% {
     width: 100%;
-    height: 100%;
+    height: 50vw;
   }
   100% {
     width: 100%;
-    height: 100%;
+    height: 50vw;
   }
 }
 
