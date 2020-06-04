@@ -13,12 +13,9 @@ const beStill = {};
 
 // array to hold length of breaths
 const toggleBreaths = [
-    3,
-    5,
     8,
     10,
-    12,
-    15
+    12
 ];
 
 // array to hold toggle colours
@@ -29,6 +26,8 @@ const toggleColors = [
 ];
 
 let inhaleLength = 0;
+
+$('.inhale').text(toggleBreaths[0]);
 
 // prevent default on a tag
 
@@ -43,7 +42,9 @@ $(document).ready(function() {
     $('.activate').on('click', function(e) {
         e.preventDefault();
         // toggle class on settings & animation
-        $('.showHide').toggleClass('active').toggleClass('dormant');       
+        $('.showHide')
+            .toggleClass('active')
+            .toggleClass('dormant');       
         // change text inside activate button
         if ($(this).text() === 'begin') {
             $(this).text('adjust');
