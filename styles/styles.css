@@ -258,6 +258,10 @@ h3 {
   font-size: 4rem;
 }
 
+body {
+  text-shadow: 1px 0 3px black;
+}
+
 .animation {
   border: 15px solid #ECEBE4;
   opacity: 0.5;

@@ -10,7 +10,6 @@
 
 const beStill = {};
 
-
 // array to hold length of breaths
 const toggleBreaths = [
     8,
@@ -32,20 +31,33 @@ const toggleColors = [
         colorText: 'yellow',
         colorHex: '#F0C808'
     }
-]
+];
+
+// array to hold themes
+const themes = [
+    {
+        name: "simplicity"
+    },
+    {
+        name: "leaves",
+        image: "../images/forestPhoto.jpg",
+    },
+    {
+        name: "seashells",
+        image: "../images/beachPhoto.jpg",
+    },
+    {
+        name: "rain",
+        image: "../images/rainPhoto.jpg",
+    },
+];
 
 let inhaleLength = 0;
 let colorSelect = 0;
+let themeSelect = 0;
 
 $('.inhale').text(toggleBreaths[0]);
-$('.toggle').css('color', toggleColors[0].colorHex)
-
-
-// prevent default on a tag
-
-// beStill.init = () => {
-//     let toggleColor = toggleColors.toggleOne;
-// }
+$('.toggle').css('color', toggleColors[0].colorHex);
 
 $(document).ready(function() {
     // beStill.init();
@@ -84,10 +96,20 @@ $(document).ready(function() {
         // cycle up through available colors, resetting to zero once end of array is reached
         colorSelect += 1;
         if (colorSelect === toggleColors.length) { colorSelect = 0 };
-        console.log(colorSelect)
         $(this).text(toggleColors[colorSelect].colorText);
         $('.toggle').css('color', toggleColors[colorSelect].colorHex)
+    })
 
+    // cycle through themes on click
+    $('.theme').on('click', function(e){
+        e.preventDefault();
+        // cycle through themes, resetting to zero once end of array is reached
+        themeSelect += 1;
+        if (themeSelect === themes.length) { themeSelect = 0 };
+        $(this).text(themes[themeSelect].name);
+        console.log(themes[themeSelect].name);
+        $('body')
+            .css('background-image', `url('images/${themes[themeSelect].image}')`);
     })
     
 });
