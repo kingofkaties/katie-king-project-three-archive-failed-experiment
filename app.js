@@ -11,14 +11,14 @@
 const beStill = {};
 
 // array to hold length of breaths
-beStill.toggleBreaths = [
+beStill.toggleBreath = [
     8,
     10,
     12
 ];
 
 // array to hold toggle colours
-beStill.toggleColors = [
+beStill.toggleColor = [
     {
         colorText: 'red',
         colorHex: '#DB5461'
@@ -34,7 +34,7 @@ beStill.toggleColors = [
 ];
 
 // array to hold themes
-beStill.themes = [
+beStill.toggleTheme = [
     {
         name: "simplicity"
     },
@@ -52,12 +52,12 @@ beStill.themes = [
     },
 ];
 
-let inhaleLength = 0;
+let breathLength = 0;
 let colorSelect = 0;
 let themeSelect = 0;
 
-$('.inhale').text(beStill.toggleBreaths[0]);
-$('.toggle').css('color', beStill.toggleColors[0].colorHex);
+$('.inhale').text(beStill.toggleBreath[0]);
+$('.toggle').css('color', beStill.toggleColor[0].colorHex);
 
 beStill.init = function() {
     // hide and show settings/animation
@@ -79,13 +79,13 @@ beStill.init = function() {
     $('.inhale').on('click', function(e) {
         e.preventDefault();
         // cycle up through available breath lengths and reset to zero once end of array is reached
-        inhaleLength += 1;
-        if (inhaleLength === beStill.toggleBreaths.length) { inhaleLength = 0 };
+        breathLength += 1;
+        if (breathLength === beStill.toggleBreath.length) { breathLength = 0 };
         // change text to reflect current breath length
-        $(this).text(beStill.toggleBreaths[inhaleLength])
+        $(this).text(beStill.toggleBreath[breathLength])
         // change value of CSS animation property to reflect current breath length
         $('.animation')
-            .css('animation-duration', `${beStill.toggleBreaths[inhaleLength]}s`)
+            .css('animation-duration', `${beStill.toggleBreath[breathLength]}s`)
     });
     
     // cycle through button colours on click
@@ -93,9 +93,9 @@ beStill.init = function() {
         e.preventDefault();
         // cycle up through available colors, resetting to zero once end of array is reached
         colorSelect += 1;
-        if (colorSelect === beStill.toggleColors.length) { colorSelect = 0 };
-        $(this).text(beStill.toggleColors[colorSelect].colorText);
-        $('.toggle').css('color', beStill.toggleColors[colorSelect].colorHex)
+        if (colorSelect === beStill.toggleColor.length) { colorSelect = 0 };
+        $(this).text(beStill.toggleColor[colorSelect].colorText);
+        $('.toggle').css('color', beStill.toggleColor[colorSelect].colorHex)
     })
     
     // cycle through themes on click
@@ -103,11 +103,11 @@ beStill.init = function() {
         e.preventDefault();
         // cycle through themes, resetting to zero once end of array is reached
         themeSelect += 1;
-        if (themeSelect === beStill.themes.length) { themeSelect = 0 };
-        $(this).text(beStill.themes[themeSelect].name);
-        console.log(beStill.themes[themeSelect].name);
+        if (themeSelect === beStill.toggleTheme.length) { themeSelect = 0 };
+        $(this).text(beStill.toggleTheme[themeSelect].name);
+        console.log(beStill.toggleTheme[themeSelect].name);
         $('body')
-            .css('background-image', `url('images/${beStill.themes[themeSelect].image}')`)
+            .css('background-image', `url('images/${beStill.toggleTheme[themeSelect].image}')`)
             // .css('background-size', '100%')
             // .css('background-position', 'center');
     })
