@@ -65,14 +65,8 @@ beStill.settings = $('<div>').html(beStill.themeText, beStill.colorText, beStill
     beStill.beginText);
 beStill.meditate = $('<div>').html('<div class="animation showHide meditate dormant"></div>')
 
-$('.instructions').text('');
 $('.breath').text(beStill.toggleBreath[0]);
 $('.toggle').css('color', beStill.toggleColor[0].colorHex);
-
-// create a function to append and remove settings one at a time
-beStill.next = function(setting) {
-    $('.instructions').html(setting);
-}
 
 // init function
 beStill.init = function() {
@@ -88,8 +82,9 @@ beStill.init = function() {
                 $('p').replaceWith(beStill.breathText);
             } else if ($('p').hasClass('breathSetting')) {
                 $('p').replaceWith(beStill.soundText);
-            } else if ($('p').hasClass('soundSetting')) {
+            } else {
                 $('.instructions').empty();
+                $('.submit a').text('begin');
             }});
             // $('.instructions').parent().find('.colorSetting').replaceWith(beStill.themeText);
 
