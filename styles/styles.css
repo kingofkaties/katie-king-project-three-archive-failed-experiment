@@ -334,11 +334,23 @@ a:hover, a:focus {
   margin: 0 auto;
 }
 
-h1 {
-  margin-top: 200px;
-  margin-bottom: 200px;
+.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100vh;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
-.submit {
-  margin-top: 200px;
+section:first-of-type {
+  height: 3rem;
+}
+
+section:last-of-type {
+  height: 5rem;
 }

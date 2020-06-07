@@ -69,9 +69,9 @@ $('.toggle').css('color', beStill.toggleColor[0].colorHex);
 beStill.init = function() {
 
     // fade in "welcome" and then color instructions
-    $(beStill.welcome).hide().prependTo('.instructions').delay(250).fadeIn(2500).delay(500).fadeOut(2500);
+    $(beStill.welcome).hide().prependTo('.instructions').delay(250).fadeIn(2500).delay(250).fadeOut(2500);
     $(beStill.colorText).hide().prependTo('.instructions').delay(7000).fadeIn(2500);
-    $(beStill.submit).hide().appendTo(beStill.colorText).delay(12000).fadeIn(2500);
+    $(beStill.submit).hide().appendTo(beStill.colorText).delay(10000).fadeIn(2500);
 
     // display next setting on "next" click, and meditation animation at the end
     $('.submit').html(beStill.submit)

@@ -120,11 +120,26 @@ a {
     margin: 0 auto;
 }
 
-h1 {
-    margin-top: 200px;
-    margin-bottom: 200px;
+.flex {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
-.submit {
-    margin-top: 200px;
+section:first-of-type {
+    height: 3rem;
 }
+
+section:last-of-type {
+    height: 5rem;
+}
+
+// h1 {
+//     margin-top: 200px;
+//     margin-bottom: 200px;
+// }
+
+// .submit {
+//     margin-top: 200px;
+// }
