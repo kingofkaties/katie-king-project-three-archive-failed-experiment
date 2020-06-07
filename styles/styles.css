@@ -263,6 +263,11 @@ body {
 }
 
 .animation {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
   border: 15px solid #ECEBE4;
   opacity: 0.5;
   margin: 0 auto;
@@ -311,14 +316,6 @@ body {
     -webkit-transform: scale(1);
             transform: scale(1);
   }
-}
-
-.active {
-  display: block;
-}
-
-.dormant {
-  display: none;
 }
 
 a {

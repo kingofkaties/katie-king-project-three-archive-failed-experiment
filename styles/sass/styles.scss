@@ -1,6 +1,6 @@
 @import "./global/setup";
-@import "./global/meditate";
-@import "./global/settings";
+// @import "./global/meditate";
+// @import "./global/settings";
 
 // GENERAL STYLES
 
@@ -64,6 +64,11 @@ body {
 // VISIBILITY
 
 .animation {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
     border: 15px solid $text;
     opacity: 0.5;
     margin: 0 auto;
@@ -95,14 +100,6 @@ body {
         // width: 50vw;
         // height: 50vw;
     }
-}
-
-.active {
-    display: block;
-}
-
-.dormant {
-    display: none;
 }
 
 // CLICKING

@@ -1,3 +1,4 @@
+// create object for namespacing
 const beStill = {};
 
 // array to hold length of breaths
@@ -58,7 +59,7 @@ beStill.welcome = $('<p>welcome</p>');
 beStill.submit = $('<div>').html('<h3><a class= "activate toggle" href="">next</a></h3 >').hide();
 beStill.settings = $('<div>').html(beStill.themeText, beStill.colorText, beStill.breathText, beStill.soundText,
     beStill.beginText);
-beStill.meditate = $('<div>').html('<div class="animation showHide meditate dormant"></div>')
+beStill.meditate = $('<div>').html('<div class="animation meditate"></div>')
 
 // set initial values
 $('.breath').text(beStill.toggleBreath[0]);
@@ -68,11 +69,11 @@ $('.toggle').css('color', beStill.toggleColor[0].colorHex);
 beStill.init = function() {
 
     // fade in "welcome" and then color instructions
-    $(beStill.welcome).hide().prependTo('main').delay(500).fadeIn(5000).delay(500).fadeOut(5000);
-    $(beStill.colorText).hide().prependTo('main').delay(12000).fadeIn(5000);
-    $(beStill.submit).hide().appendTo(beStill.colorText).delay(18000).fadeIn(5000);
+    $(beStill.welcome).hide().prependTo('.instructions').delay(250).fadeIn(2500).delay(500).fadeOut(2500);
+    $(beStill.colorText).hide().prependTo('.instructions').delay(7000).fadeIn(2500);
+    $(beStill.submit).hide().appendTo(beStill.colorText).delay(12000).fadeIn(2500);
 
-    // display next setting on "next" click
+    // display next setting on "next" click, and meditation animation at the end
     $('.submit').html(beStill.submit)
         .on('click', function(e) {
             e.preventDefault();
@@ -86,8 +87,10 @@ beStill.init = function() {
                 $('.instructions').empty();
             }
             if ($('.instructions').empty()) {
-                console.log('animation start!');
-            }});           
+                $('.instructions').replaceWith(beStill.meditate);
+                $('.submit a').text('adjust')
+            }
+        });           
     
     // cycle through button colours on click
     $(document).on('click', '.color', function(e) {
