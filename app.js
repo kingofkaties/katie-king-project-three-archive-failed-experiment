@@ -48,10 +48,17 @@ beStill.colorSelect = 0;
 beStill.themeSelect = 0;
 
 // create HTML for each setting
-beStill.themeText = '<h2 class="showHide active">among the <a href="" class="toggle theme">simplicity</a></h2>';
-beStill.colorText = '<p>click the <a class="toggle color" href="">red</a> text to see your options</p>';
-beStill.breathText = '<p>inhale for <a class="toggle breath" href="">3</a> seconds</p>';
-beStill.soundText = '<p>sound is <a class="toggle" href="">on</a></p>'
+beStill.colorText = '<p class="colorSetting">click the <a class="toggle color" href="">red</a> text to see your options</p>';
+beStill.themeText = '<p class="themeSetting">among the <a href="" class="toggle theme">simplicity</a></p>';
+beStill.breathText = '<p class="breathSetting">inhale for <a class="toggle breath" href="">3</a> seconds</p>';
+beStill.soundText = '<p class="soundSetting">sound is <a class="toggle" href="">on</a></p>'
+
+// beStill.textVariable = [
+//     {text: '<p class="colorSetting">click the <a class="toggle color" href="">red</a> text to see your options</p>'},
+//     {text: '<p class="themeSetting">among the <a href="" class="toggle theme">simplicity</a></p>'},
+//     {text: '<p class="breathSetting">inhale for <a class="toggle breath" href="">3</a> seconds</p>'},
+//     {text: '<p class="soundSetting">sound is <a class="toggle" href="">on</a></p>'}
+// ];
 
 beStill.submit = $('<div>').html('<h3><a class= "activate" href="">next</a></h3 >');
 beStill.settings = $('<div>').html(beStill.themeText, beStill.colorText, beStill.breathText, beStill.soundText,
@@ -73,17 +80,32 @@ beStill.init = function() {
     $('.submit').html(beStill.submit)
         .on('click', function(e) {
             e.preventDefault();
-            if ($('.instructions').html() === '') {
-                $('.instructions').html(beStill.colorText);
-            } else if ($('.instructions').html() === beStill.colorText ) {
-                console.log("else if working");
-                $('.instructions').html(beStill.themeText);
-            } else if ($('.instructions').html() === beStill.themeText ) {
-                $('.instructions').html(beStill.breathText);
-            } else if ($('.instructions').html() === beStill.breathText) {
-                $('.instructions').html(beStill.soundText);
-            } else { $('.instructions').html(''); }
-        });    
+            if ($('.instructions').hasClass('empty')) {
+                $('.instructions').removeClass('empty').append(beStill.colorText);
+            } else if ($('p').hasClass('colorSetting')) {
+                $('p').replaceWith(beStill.themeText);
+            } else if ($('p').hasClass('themeSetting')) {
+                $('p').replaceWith(beStill.breathText);
+            } else if ($('p').hasClass('breathSetting')) {
+                $('p').replaceWith(beStill.soundText);
+            } else if ($('p').hasClass('soundSetting')) {
+                $('.instructions').empty();
+            }});
+            // $('.instructions').parent().find('.colorSetting').replaceWith(beStill.themeText);
+
+        //     if ($('.instructions:empty')) {
+        //         $('.instructions').append(beStill.colorText);
+        //         console.log($('.instructions'));
+        //     } else if ($('.instructions').find('.colorSetting')) {
+        //         $('.instructions').html(beStill.themeText);
+        //         console.log($('.instructions'));
+        //     } else if ($('.instructions').hasClass('breathSetting')) {
+        //         $('.instructions').html(beStill.breathText);
+        //     } else if ($('.instructions').hasClass('soundSetting')) {
+        //         console.log($('.instructions'));
+        //         $('.instructions').html(beStill.soundText);
+        //     } else { $('.instructions').html(''); }
+           
     
     // cycle through button colours on click
     $(document).on('click', '.color', function(e) {
