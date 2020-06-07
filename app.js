@@ -60,7 +60,8 @@ beStill.soundText = '<p class="soundSetting">sound is <a class="toggle" href="">
 //     {text: '<p class="soundSetting">sound is <a class="toggle" href="">on</a></p>'}
 // ];
 
-beStill.submit = $('<div>').html('<h3><a class= "activate" href="">next</a></h3 >');
+beStill.welcome = $('<p>welcome</p>');
+beStill.submit = $('<div>').html('<h3><a class= "activate" href="">next</a></h3 >').hide();
 beStill.settings = $('<div>').html(beStill.themeText, beStill.colorText, beStill.breathText, beStill.soundText,
     beStill.beginText);
 beStill.meditate = $('<div>').html('<div class="animation showHide meditate dormant"></div>')
@@ -70,13 +71,18 @@ $('.toggle').css('color', beStill.toggleColor[0].colorHex);
 
 // init function
 beStill.init = function() {
+
+    // fade in "welcome" and then color instructions
+    $(beStill.welcome).hide().prependTo('main').delay(500).fadeIn(5000).delay(500).fadeOut(5000);
+    $(beStill.colorText).hide().prependTo('main').delay(12000).fadeIn(5000);
+    $(beStill.submit).hide().appendTo(beStill.colorText).delay(18000).fadeIn(5000);
+    
+
     // display next setting on "next" click
     $('.submit').html(beStill.submit)
         .on('click', function(e) {
             e.preventDefault();
-            if ($('.instructions').hasClass('empty')) {
-                $('.instructions').removeClass('empty').append(beStill.colorText);
-            } else if ($('p').hasClass('colorSetting')) {
+            if ($('p').hasClass('colorSetting')) {
                 $('p').replaceWith(beStill.themeText);
             } else if ($('p').hasClass('themeSetting')) {
                 $('p').replaceWith(beStill.breathText);
@@ -85,22 +91,7 @@ beStill.init = function() {
             } else {
                 $('.instructions').empty();
                 $('.submit a').text('begin');
-            }});
-            // $('.instructions').parent().find('.colorSetting').replaceWith(beStill.themeText);
-
-        //     if ($('.instructions:empty')) {
-        //         $('.instructions').append(beStill.colorText);
-        //         console.log($('.instructions'));
-        //     } else if ($('.instructions').find('.colorSetting')) {
-        //         $('.instructions').html(beStill.themeText);
-        //         console.log($('.instructions'));
-        //     } else if ($('.instructions').hasClass('breathSetting')) {
-        //         $('.instructions').html(beStill.breathText);
-        //     } else if ($('.instructions').hasClass('soundSetting')) {
-        //         console.log($('.instructions'));
-        //         $('.instructions').html(beStill.soundText);
-        //     } else { $('.instructions').html(''); }
-           
+            }});           
     
     // cycle through button colours on click
     $(document).on('click', '.color', function(e) {
@@ -135,7 +126,6 @@ beStill.init = function() {
         // change value of CSS animation property to reflect current breath length
         $('.animation')
             .css('animation-duration', `${beStill.toggleBreath[beStill.breathLength]}s`)
-        
     });
 }
 
