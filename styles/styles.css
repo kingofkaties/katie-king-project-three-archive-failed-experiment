@@ -263,7 +263,6 @@ body {
 }
 
 .animation {
-  position: absolute;
   top: 0;
   bottom: 0;
   right: 0;
@@ -348,7 +347,7 @@ a:hover, a:focus {
 }
 
 section:first-of-type {
-  height: 3rem;
+  min-height: 3rem;
 }
 
 section:last-of-type {
