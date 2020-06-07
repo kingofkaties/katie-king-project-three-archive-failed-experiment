@@ -325,6 +325,12 @@ a {
   text-decoration: none;
 }
 
+a:hover, a:focus {
+  text-decoration: underline overline;
+  -webkit-text-decoration-style: wavy;
+          text-decoration-style: wavy;
+}
+
 .wrapper {
   width: 80%;
   max-width: 1200px;

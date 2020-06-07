@@ -109,6 +109,11 @@ body {
 
 a {
     text-decoration: none;
+    &:hover,
+    &:focus {
+        text-decoration: underline overline;
+        text-decoration-style: wavy;
+    }
 }
 
 // MARGINS & PADDING

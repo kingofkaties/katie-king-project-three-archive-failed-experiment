@@ -53,19 +53,14 @@ beStill.themeText = '<p class="themeSetting">among the <a href="" class="toggle 
 beStill.breathText = '<p class="breathSetting">inhale for <a class="toggle breath" href="">3</a> seconds</p>';
 beStill.soundText = '<p class="soundSetting">sound is <a class="toggle" href="">on</a></p>'
 
-// beStill.textVariable = [
-//     {text: '<p class="colorSetting">click the <a class="toggle color" href="">red</a> text to see your options</p>'},
-//     {text: '<p class="themeSetting">among the <a href="" class="toggle theme">simplicity</a></p>'},
-//     {text: '<p class="breathSetting">inhale for <a class="toggle breath" href="">3</a> seconds</p>'},
-//     {text: '<p class="soundSetting">sound is <a class="toggle" href="">on</a></p>'}
-// ];
-
+// create elements to be added to the DOM
 beStill.welcome = $('<p>welcome</p>');
-beStill.submit = $('<div>').html('<h3><a class= "activate" href="">next</a></h3 >').hide();
+beStill.submit = $('<div>').html('<h3><a class= "activate toggle" href="">next</a></h3 >').hide();
 beStill.settings = $('<div>').html(beStill.themeText, beStill.colorText, beStill.breathText, beStill.soundText,
     beStill.beginText);
 beStill.meditate = $('<div>').html('<div class="animation showHide meditate dormant"></div>')
 
+// set initial values
 $('.breath').text(beStill.toggleBreath[0]);
 $('.toggle').css('color', beStill.toggleColor[0].colorHex);
 
@@ -76,7 +71,6 @@ beStill.init = function() {
     $(beStill.welcome).hide().prependTo('main').delay(500).fadeIn(5000).delay(500).fadeOut(5000);
     $(beStill.colorText).hide().prependTo('main').delay(12000).fadeIn(5000);
     $(beStill.submit).hide().appendTo(beStill.colorText).delay(18000).fadeIn(5000);
-    
 
     // display next setting on "next" click
     $('.submit').html(beStill.submit)
@@ -90,7 +84,9 @@ beStill.init = function() {
                 $('p').replaceWith(beStill.soundText);
             } else {
                 $('.instructions').empty();
-                $('.submit a').text('begin');
+            }
+            if ($('.instructions').empty()) {
+                console.log('animation start!');
             }});           
     
     // cycle through button colours on click
@@ -100,7 +96,7 @@ beStill.init = function() {
         beStill.colorSelect += 1;
         if (beStill.colorSelect === beStill.toggleColor.length) { beStill.colorSelect = 0 };
         $(this).text(beStill.toggleColor[beStill.colorSelect].colorText);
-        $('.toggle').css('color', beStill.toggleColor[beStill.colorSelect].colorHex)
+        $('.toggle').css('color', beStill.toggleColor[beStill.colorSelect].colorHex);
     })
     
     // cycle through themes on click
@@ -112,7 +108,7 @@ beStill.init = function() {
         $(this).text(beStill.toggleTheme[beStill.themeSelect].name);
         console.log(beStill.toggleTheme[beStill.themeSelect].name);
         $('body')
-        .css('background-image', `url('images/${beStill.toggleTheme[beStill.themeSelect].image}')`)
+        .css('background-image', `url('images/${beStill.toggleTheme[beStill.themeSelect].image}')`);
     });
     
     // cycle through breath lengths on click
@@ -122,11 +118,14 @@ beStill.init = function() {
         beStill.breathLength += 1;
         if (beStill.breathLength === beStill.toggleBreath.length) { beStill.breathLength = 0 };
         // change text to reflect current breath length
-        $(this).text(beStill.toggleBreath[beStill.breathLength])
+        $(this).text(beStill.toggleBreath[beStill.breathLength]);
         // change value of CSS animation property to reflect current breath length
         $('.animation')
-            .css('animation-duration', `${beStill.toggleBreath[beStill.breathLength]}s`)
+            .css('animation-duration', `${beStill.toggleBreath[beStill.breathLength]}s`);
     });
+
+    // create meditation animation when "begin" clicked
+
 }
 
 $(document).ready(function() {
