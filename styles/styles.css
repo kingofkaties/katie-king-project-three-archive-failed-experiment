@@ -259,7 +259,7 @@ h3 {
 }
 
 body {
-  text-shadow: 1px 0 3px black;
+  text-shadow: 0 0 50px black;
 }
 
 .animation {

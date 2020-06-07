@@ -84,9 +84,6 @@ beStill.init = function() {
             } else if ($('p').hasClass('breathSetting')) {
                 $('p').replaceWith(beStill.soundText);
             } else {
-                $('.instructions').empty();
-            }
-            if ($('.instructions').empty()) {
                 $('.instructions').replaceWith(beStill.meditate);
                 $('.submit a').text('adjust')
             }
@@ -126,8 +123,6 @@ beStill.init = function() {
         $('.animation')
             .css('animation-duration', `${beStill.toggleBreath[beStill.breathLength]}s`);
     });
-
-    // create meditation animation when "begin" clicked
 
 }
 
