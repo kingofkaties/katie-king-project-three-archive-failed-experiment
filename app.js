@@ -56,7 +56,7 @@ $('.toggle').css('color', beStill.toggleColor[0].colorHex);
 // create HTML for each setting
 beStill.colorText = '<p class="colorSetting">click the <a class="toggle color" href="">red</a> text to see your options</p>';
 beStill.themeText = '<p class="themeSetting">among the <a href="" class="toggle theme">simplicity</a></p>';
-beStill.breathText = '<p class="breathSetting">inhale for <a class="toggle breath" href="">3</a> seconds</p>';
+beStill.breathText = '<p class="breathSetting">inhale for <a class="toggle breath" href="">12</a> seconds</p>';
 beStill.soundText = '<p class="soundSetting">sound is <a class="toggle" href="">on</a></p>'
 
 // create elements to be added to the DOM
@@ -66,6 +66,41 @@ beStill.settings = $('<div>').html(beStill.themeText, beStill.colorText, beStill
     beStill.beginText);
 // beStill.meditate = $('<div>').html('<div class="animation meditate"></div>')
 beStill.meditate = $('<div>').addClass('animation')
+
+// EXPERIMENTING WITH WRITING FUNCTIONS FOR ALL TOGGLE STATES
+// beStill.cycleColor = function() {
+//     $('.color').on('click', function(e) {
+//         e.preventDefault();
+
+//     beStill.colorSelect += 1;
+//     if (beStill.colorSelect === beStill.toggleColor.length) { beStill.colorSelect = 0 };
+//     $('a.toggle.color').text(beStill.toggleColor[beStill.colorSelect].colorText);
+//     // change CSS on all a tags to match current color
+//     $('.toggle').css('color', beStill.toggleColor[beStill.colorSelect].colorHex);
+// })};
+
+// beStill.cycleTheme = function() {
+//     $('.theme').on('click', function(e) {
+//         e.preventDefault();
+//     beStill.themeSelect += 1;
+//         if (beStill.themeSelect === beStill.toggleTheme.length) { beStill.themeSelect = 0; console.log(beStill.themeSelect) };
+//     $('a.toggle.theme').text(beStill.toggleTheme[beStill.themeSelect].name);
+//     $('body')
+//         .css('background-image', `url('images/${beStill.toggleTheme[beStill.themeSelect].image}')`);
+// })};
+
+// beStill.cycleBreath = function() {
+//     $('.breath').on('click', function (e) {
+//         e.preventDefault();
+
+//     beStill.breathLength += 1;
+//     if (beStill.breathLength === beStill.toggleBreath.length) { beStill.breathLength = 0 };
+//     // change text to reflect current breath length
+//     $('a.toggle.breath').text(beStill.toggleBreath[beStill.breathLength]);
+//     // change value of CSS animation property to reflect current breath length
+//     $('.animation')
+//         .css('animation-duration', `${beStill.toggleBreath[beStill.breathLength]}s`);
+// })};
 
 // init function
 beStill.init = function() {
@@ -93,17 +128,35 @@ beStill.init = function() {
                 }
             }            
         });
-    
+
+    // EXPERIMENTING WITH A SINGLE DOC ON CLICK
+    // $(document).on('click', '.breath', function (e) {
+    //     e.preventDefault();
+    //     console.log('will tris trigger');
+    //     // beStill.cycleColor();
+    //     // beStill.cycleTheme();
+    //     // beStill.cycleBreath();
+    // })
+    // $(document).on('click', '.color', function (e) {
+    //     e.preventDefault();
+    //     console.log('will tris trigger 2');
+    //     // beStill.cycleColor();
+    //     // beStill.cycleTheme();
+    //     // beStill.cycleBreath();
+    // })
+
+    // TEMPORARY COMMENTING WHILE I EXPERIMENT
     // cycle through button colours on click
-    $(document).on('click', '.color', '.toggle', function(e) {
+    $(document).on('click', '.color', function(e) {
         e.preventDefault();
         // cycle up through available colors, resetting to zero once end of array is reached
         beStill.colorSelect += 1;
         if (beStill.colorSelect === beStill.toggleColor.length) { beStill.colorSelect = 0 };
         $(this).text(beStill.toggleColor[beStill.colorSelect].colorText);
+        console.log(beStill.toggleColor[beStill.colorSelect].colorHex);
         // change CSS on all a tags to match current color
         $('.toggle').css('color', beStill.toggleColor[beStill.colorSelect].colorHex);
-    })
+    });
     
     // cycle through themes on click
     $(document).on('click', '.theme', function(e) {
@@ -118,19 +171,24 @@ beStill.init = function() {
     });
     
     // cycle through breath lengths on click
-    $(document).on('click', '.breath', '.animation', function(e) {
+    $(document).on('click', '.breath', function(e) {
         e.preventDefault();
         // cycle up through available breath lengths and reset to zero once end of array is reached
         beStill.breathLength += 1;
         if (beStill.breathLength === beStill.toggleBreath.length) { beStill.breathLength = 0 };
         // change text to reflect current breath length
         $(this).text(beStill.toggleBreath[beStill.breathLength]);
+        console.log(beStill.toggleBreath[beStill.breathLength]);
         // change value of CSS animation property to reflect current breath length
         $('.animation')
-            .css('animation-duration', `${beStill.toggleBreath[beStill.breathLength]}s`);
+            .css({
+                margin: '50px',
+                animationDuration: `10s`
+            });
     });
-
 }
+
+// 'animation-duration', `${beStill.toggleBreath[beStill.breathLength]}s`
 
 $(document).ready(function() {
     beStill.init();
